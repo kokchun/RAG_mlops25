@@ -28,3 +28,6 @@ def ingest_docs_to_vector_db(table):
 
         print(table.to_pandas()["document_name"])
 
+if __name__ == "__main__":
+    vector_db = setup_vector_db(VECTOR_DB_PATH)
+    ingest_docs_to_vector_db(vector_db["articles"])
