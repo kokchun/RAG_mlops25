@@ -32,3 +32,12 @@ You are an animal expert who loves helping young pet owners (ages 10-15).
 @rag_agent.tool_plain
 def retrieve_top_documents(query: str, k: int = 3):
     """retrieves documents from knowledge base"""
+    results = vector_db["articles"].search(query=query).limit(k).to_list()
+
+    return f"""
+    Filename: {results[0]["filename"]},
+
+    Content: {results[0]["content"]}
+    """
+
+
